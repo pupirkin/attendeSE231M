@@ -1,0 +1,18 @@
+.Signup {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 80px;
+  font-family: Poppins;
+}
+.content {
+  background-color: white;
+}
+.login a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.login a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,84 @@
+.Header {
+  /* align-items: center; */
+  background-color: #343434;
+  height: 60px;
+  width: 100%;
+  margin: 0;
+}
+.contentHeader {
+  display: inline;
+}
+.Logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+
+  color: #fff;
+  font-family: Prosto One;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+}
+.menu {
+  float: left;
+}
+.menuIcon {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+.Icons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: -35px;
+}
+.logo {
+  background-color: #225dac;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.icons {
+  width: 22px;
+  height: 22px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+}
+
+/* MObile version */
+/* .nav-menu:active{
+        .icons {
+            display: flex;
+            justify-content: end;
+        }
+    } */
+
+/* Header Default */
+
+.Header1 {
+  width: 100%;
+  height: 68px;
+  background: #343434;
+}
+
+/* .logo1 {
+  display: flex;
+  width: 200px;
+  height: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 9px;
+  flex-shrink: 0;
+} */
