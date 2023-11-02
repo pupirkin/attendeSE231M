@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import './signin.css';
 import { Link, useHistory } from 'react-router-dom';
-import firebase from firebase.js;
-import 'firebase/auth';
-
-const firebaseConfig = {
-  // ...your Firebase config
-};
-
-firebase.initializeApp(firebaseConfig);
 
 function SignIn() {
+  const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-  const history = useHistory(); // For programmatic navigation
+  const history = useHistory();
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -25,26 +21,13 @@ function SignIn() {
   };
 
   const handleSignIn = () => {
-    setError(null);
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('Signed in as:', user.email);
-
-        // Check if the user's email is allowed
-        if (user.email === '38516@iitu.edu.kz') {
-          history.push('/mainpage'); // Navigate to mainpage.jsx
-        } else {
-          setError('Access restricted for this email address.');
-        }
-      })
-      .catch((error) => {
-        console.error('Sign-in error:', error.message);
-        setError('Invalid email or password. Please try again.');
-      });
+    if (email === '38516@iitu.edu.kz' && password === '123123') {
+      // Redirect to mainpage.jsx
+      history.push('/mainpage');
+    } else {
+      // Handle incorrect login here, for example, show an error message
+      alert('Incorrect email or password');
+    }
   };
 
   return (
@@ -72,13 +55,25 @@ function SignIn() {
               onChange={handlePasswordChange}
             />
           </div>
-          {error && <div className="error-message">{error}</div>}
-          <button className="buttonLogin" onClick={handleSignIn}>
-            Sign In
-          </button>
+          <div className="rem">
+            <input
+              className="rememberInput"
+              type="checkbox"
+              id="myCheckbox"
+              name="myCheckbox"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
+            <label htmlFor="myCheckbox" className="remember">
+              Remember me
+            </label>
+          </div>
           <div className="forgot-pass">
             <a href="#">Forgot Password?</a>
           </div>
+          <button className="buttonLogin" onClick={handleSignIn}>
+            Login
+          </button>
         </form>
       </div>
     </div>
