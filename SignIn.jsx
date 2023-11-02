@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './signin.css';
 import { Link, useHistory } from 'react-router-dom';
-import firebase from 'firebase/app';
+import firebase from firebase.js;
 import 'firebase/auth';
 
 const firebaseConfig = {
