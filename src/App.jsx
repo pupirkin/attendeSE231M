@@ -13,8 +13,8 @@ function App() {
       </head>
       <BrowserRouter>
         <Routes>
-          <Route index path="/" element={<SignUp />} />
-          <Route index path="/signin" element={<SignIn />} />
+          {/* <Route index path="/" element={<SignUp />} /> */}
+          <Route index path="/" element={<SignIn />} />
           <Route index path="/mainpage" element={<MainPage />} />
 
 
