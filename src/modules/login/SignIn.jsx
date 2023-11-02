@@ -1,25 +1,16 @@
 import React, { useState } from 'react';
 import './signin.css';
-import { Link } from 'react-router-dom';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCaE_8Pb0yUuOdbWfyuDj10Bjwn5VOB3gs",
-  authDomain: "attendese231-m.firebaseapp.com",
-  projectId: "attendese231-m",
-  storageBucket: "attendese231-m.appspot.com",
-  messagingSenderId: "775024373779",
-  appId: "1:775024373779:web:a598388cb325bf90fe8fe6",
-  measurementId: "G-58TK76693P"
-};
-
-firebase.initializeApp(firebaseConfig);
+import { Link, useHistory } from 'react-router-dom';
 
 function SignIn() {
+  const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null); // State to store the error message
+  const history = useHistory();
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -30,21 +21,13 @@ function SignIn() {
   };
 
   const handleSignIn = () => {
-    // Reset the error message
-    setError(null);
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('Signed in as:', user.email);
-      })
-      .catch((error) => {
-        // Handle sign-in error
-        console.error('Sign-in error:', error.message);
-        setError('Invalid email or password. Please try again.');
-      });
+    if (email === '38516@iitu.edu.kz' && password === '123123') {
+      // Redirect to mainpage.jsx
+      history.push('/mainpage');
+    } else {
+      // Handle incorrect login here, for example, show an error message
+      alert('Incorrect email or password');
+    }
   };
 
   return (
@@ -72,15 +55,25 @@ function SignIn() {
               onChange={handlePasswordChange}
             />
           </div>
-          {error && <div className="error-message">{error}</div>}
-          <Link className="loginLink" to="/mainpage">
-            <button className="buttonLogin" onClick={handleSignIn}>
-              Sign In
-            </button>
-          </Link>
+          <div className="rem">
+            <input
+              className="rememberInput"
+              type="checkbox"
+              id="myCheckbox"
+              name="myCheckbox"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
+            <label htmlFor="myCheckbox" className="remember">
+              Remember me
+            </label>
+          </div>
           <div className="forgot-pass">
             <a href="#">Forgot Password?</a>
           </div>
+          <button className="buttonLogin" onClick={handleSignIn}>
+            Login
+          </button>
         </form>
       </div>
     </div>
